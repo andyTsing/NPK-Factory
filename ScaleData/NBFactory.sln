@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NBFactory", "NBFactory.csproj", "{0DE5D5BE-21F9-4B86-9038-C429F5CADA8F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExportReport", "..\ExportReport\ExportReport.csproj", "{057FDE78-74F1-4A16-B820-EF8E21D2C387}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0DE5D5BE-21F9-4B86-9038-C429F5CADA8F} = {0DE5D5BE-21F9-4B86-9038-C429F5CADA8F}
+	EndProjectSection
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ShareData", "..\ShareData\ShareData.shproj", "{1A1733C2-5C14-4337-9107-82D1B8D9E204}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "NB Factory", "..\NB Factory\NB Factory.vdproj", "{B16CC366-E5B4-4AB6-8029-23361CCD5235}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		..\ShareData\ShareData.projitems*{057fde78-74f1-4a16-b820-ef8e21d2c387}*SharedItemsImports = 4
+		..\ShareData\ShareData.projitems*{0de5d5be-21f9-4b86-9038-c429f5cada8f}*SharedItemsImports = 4
+		..\ShareData\ShareData.projitems*{1a1733c2-5c14-4337-9107-82d1b8d9e204}*SharedItemsImports = 13
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0DE5D5BE-21F9-4B86-9038-C429F5CADA8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DE5D5BE-21F9-4B86-9038-C429F5CADA8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DE5D5BE-21F9-4B86-9038-C429F5CADA8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DE5D5BE-21F9-4B86-9038-C429F5CADA8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{057FDE78-74F1-4A16-B820-EF8E21D2C387}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{057FDE78-74F1-4A16-B820-EF8E21D2C387}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{057FDE78-74F1-4A16-B820-EF8E21D2C387}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{057FDE78-74F1-4A16-B820-EF8E21D2C387}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B16CC366-E5B4-4AB6-8029-23361CCD5235}.Debug|Any CPU.ActiveCfg = Debug
+		{B16CC366-E5B4-4AB6-8029-23361CCD5235}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

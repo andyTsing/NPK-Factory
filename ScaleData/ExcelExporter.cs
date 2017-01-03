@@ -1,4 +1,5 @@
 ﻿using Microsoft.Office.Interop.Excel;
+using ScaleData.Properties;
 using ScalesData.Properties;
 using System;
 using System.Collections.Generic;
@@ -39,20 +40,51 @@ namespace ScalesData
 
         public void export()
         {
-            mExcel = new Application();
-            mExcel.ScreenUpdating = false;
-            mWorkbook = mExcel.Workbooks.Add("");
-            mSheet = mWorkbook.ActiveSheet;
+            try
+            {
+                mExcel = new Application();
+                //mExcel.Visible = false;
+                mExcel.ScreenUpdating = false;
+                mExcel.UserControl = false;
+                mExcel.Interactive = false;
+                mWorkbook = mExcel.Workbooks.Add("");
+                mSheet = mWorkbook.ActiveSheet;
 
-            mSheet.Cells.Font.Size = TEXT_NORMAL;
-            mSheet.Cells.Font.Name = "Times New Roman";
+                mSheet.Cells.Font.Size = TEXT_NORMAL;
+                mSheet.Cells.Font.Name = "Times New Roman";
 
-            addTableHeader();
-            addTableContent();
-            addForm();
+                addTableHeader();
+                addTableContent();
+                addForm();
 
-            protect();
-            saveAndClose();
+                protect();
+                saveAndClose();
+            } finally
+            {
+                if (mWorkbook != null)
+                {
+                    // Enable update screen here because if excel app don't exit, it'll allow user to interactive with windows.
+                    mExcel.ScreenUpdating = true;
+                    mExcel.UserControl = true;
+                    mExcel.Interactive = true;
+                    //
+
+                    mWorkbook.Close(0);
+                    mExcel.Workbooks.Close();
+                    mExcel.Quit();
+
+                    System.Runtime.InteropServices.Marshal.ReleaseComObject(this.mSheet);
+                    System.Runtime.InteropServices.Marshal.ReleaseComObject(this.mWorkbook);
+                    System.Runtime.InteropServices.Marshal.ReleaseComObject(this.mExcel);
+
+                    this.mSheet = null;
+                    mWorkbook = null;
+                    mExcel = null;
+
+                    GC.Collect();
+                    GC.WaitForPendingFinalizers();
+                }
+            }
         }
 
         private void addTableHeader()
@@ -97,6 +129,9 @@ namespace ScalesData
                 {
                     row_index = mEndRow + 1;
                     mIndexMapper.Add(date, row_index);
+
+                    object lastValue = mSheet.Cells[mEndRow, COL_INDEX].Value;
+                    setCellData(row_index, COL_INDEX, lastValue is double ? ((double) lastValue) + 1 : 1);
                 }
                 if (!mIndexMapper.TryGetValue(data.ScaleTag, out col_index))
                 {
@@ -106,7 +141,6 @@ namespace ScalesData
 
                 setCellData(row_index, COL_TIME_INDEX, date);
                 setCellData(row_index, col_index, data.Weight);
-                setCellData(row_index, COL_INDEX, i);
 
                 for (int j = COL_TIME_INDEX + 1; j <= mEndCol; j++)
                 {
@@ -189,7 +223,6 @@ namespace ScalesData
                 }
             }
 
-            mWorkbook.Close();
             MessageBoxEx.Show("Report created at " + filename + ".");
         }
 

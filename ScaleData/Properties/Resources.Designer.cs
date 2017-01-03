@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ScalesData.Properties {
+namespace ScaleData.Properties {
     using System;
     
     
@@ -115,7 +115,7 @@ namespace ScalesData.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ca.
+        ///   Looks up a localized string similar to Ca.
         /// </summary>
         internal static string SHIFT {
             get {

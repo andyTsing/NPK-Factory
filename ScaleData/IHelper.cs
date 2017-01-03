@@ -19,7 +19,7 @@ namespace ScalesData
 
         void addScales(string tag);
         string[] getAllScales();
-        void insertScalesValue(string scaleTag, float weight);
-        void insertScalesValue(string datetime, string scaleTag, float weight);
+        //void insertScalesValue(string scaleTag, float weight);
+        void insertScalesValue(string scaleTag, float weight, string datetime = null);
     }
 }

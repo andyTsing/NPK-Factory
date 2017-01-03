@@ -81,8 +81,7 @@ namespace ScalesData
                 //{
                     if (closeIfInvalid)
                     {
-                        Launcher launcher = new Launcher();
-                        launcher.exit();
+                    Launcher.exit();
                     } else
                     {
                         if (!DataStorage.validateDataPath(Settings.Default.DataPath, out errorMsg))

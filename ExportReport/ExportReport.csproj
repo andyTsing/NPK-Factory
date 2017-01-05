@@ -98,12 +98,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ScaleData\NBFactory.csproj">
-      <Project>{0de5d5be-21f9-4b86-9038-c429f5cada8f}</Project>
-      <Name>NBFactory</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="..\ShareData\ShareData.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

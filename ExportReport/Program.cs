@@ -1,5 +1,4 @@
-﻿using ScalesData;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +12,9 @@ namespace ExportReport
         [STAThread]
         static void Main(string[] args)
         {
-            Launcher launcher = new Launcher();
+            //Launcher launcher = new Launcher();
+            //launcher.showView(true);
+            dynamic launcher = Activator.CreateInstance(Type.GetTypeFromProgID("ScalesData.Launcher"));
             launcher.showView(true);
         }
     }

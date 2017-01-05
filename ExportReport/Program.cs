@@ -14,8 +14,22 @@ namespace ExportReport
         {
             //Launcher launcher = new Launcher();
             //launcher.showView(true);
-            dynamic launcher = Activator.CreateInstance(Type.GetTypeFromProgID("ScalesData.Launcher"));
-            launcher.showView(true);
+            try
+            {
+                Type type = Type.GetTypeFromProgID("ScalesData.Launcher");
+                if (type != null)
+                {
+                    dynamic launcher = Activator.CreateInstance(type);
+                    launcher.showView(true);
+                } else
+                {
+                    MessageBox.Show("Couldn't load library file. System exit.");
+                }
+            } catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                MessageBox.Show(e.ToString());
+            }
         }
     }
 }

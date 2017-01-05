@@ -74,7 +74,9 @@ namespace ScalesData
 
                 Logger.Log("DB Opened");
             }
+#pragma warning disable CS0168 // Variable is declared but never used
             catch (Exception e)
+#pragma warning restore CS0168 // Variable is declared but never used
             {
                 try
                 {

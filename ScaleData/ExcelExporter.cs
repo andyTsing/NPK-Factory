@@ -141,6 +141,7 @@ namespace ScalesData
 
                 setCellData(row_index, COL_TIME_INDEX, date);
                 setCellData(row_index, col_index, data.Weight);
+                mSheet.Cells[row_index, col_index].NumberFormat = "#.#";
 
                 for (int j = COL_TIME_INDEX + 1; j <= mEndCol; j++)
                 {
@@ -201,9 +202,17 @@ namespace ScalesData
 
         private void protect()
         {
-            Range tableRange = mSheet.Range[mSheet.Cells[mStartRow, mStartCol], mSheet.Cells[mEndRow, mEndCol]];
             mSheet.Cells.Locked = false;
-            tableRange.Locked = true;
+
+            if (this.DataList.Count > 0)
+            {
+                // only protect data cell, so if data is empty, ignore it
+                Range startCell = mSheet.Cells[mStartRow + 2, mStartCol];
+                Range endCell = mSheet.Cells[mEndRow, mEndCol];
+                Range tableRange = mSheet.Range[startCell, endCell];
+                tableRange.Locked = true;
+            }
+
             mSheet.Protect(Password, AllowFormattingCells: true, AllowFormattingColumns:true, AllowFormattingRows: true);
         }
 
